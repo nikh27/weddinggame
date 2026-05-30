@@ -80,6 +80,9 @@ export default function WeddingEnding({ socket }) {
       a.href = imgData
       a.download = `Wedding_Certificate_${dateStr}.png`
       a.click()
+    }).catch(err => {
+      console.error("Certificate generation error:", err)
+      alert("Oops! There was an error generating the image. Please try again.")
     })
   }
 
