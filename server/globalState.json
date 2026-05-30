@@ -1,0 +1,20 @@
+{
+  "gamePhase": "house",
+  "pandaHasRing": false,
+  "proposalStatus": "none",
+  "botState": "idle",
+  "pandaIsSitting": false,
+  "penguinIsSitting": false,
+  "penguinCoffeeSips": 0,
+  "engagementStatus": "none",
+  "penguinHasSecondRing": false,
+  "pandaHasSecondRing": false,
+  "weddingStage": 1,
+  "musicState": {
+    "isPlaying": true,
+    "songIndex": 2,
+    "volume": 0.5,
+    "seekTime": 2,
+    "seekId": 1780139477988
+  }
+}
