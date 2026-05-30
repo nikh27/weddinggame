@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import html2canvas from 'html2canvas'
 
 const SONGS = [
   { id: 0, title: 'Aaj Se Teri', url: encodeURI('/Aaj Se Teri - Lyrical  Padman  Akshay Kumar & Radhika Apte  Arijit Singh  Amit Trivedi - Zee Music Company.mp3') },
@@ -71,8 +72,15 @@ export default function WeddingEnding({ socket }) {
   const downloadCertificate = () => {
     const el = document.getElementById('wedding-certificate')
     if (!el) return
-    // Use html2canvas if available, otherwise just print
-    window.print()
+    
+    // Briefly adjust styling to ensure crisp capture if needed, then capture
+    html2canvas(el, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(canvas => {
+      const imgData = canvas.toDataURL('image/png')
+      const a = document.createElement('a')
+      a.href = imgData
+      a.download = `Wedding_Certificate_${dateStr}.png`
+      a.click()
+    })
   }
 
   const downloadPhoto = (url, filename) => {
