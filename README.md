@@ -57,3 +57,9 @@ The project consists of a **Server** and a **Client**, which both need to be run
 4. In Tab 2, enter a name and join as the **Penguin**.
 
 Have fun exploring the world! Use **WASD** to move around and **Enter** to chat!
+
+## ?? Comprehensive Learning Guide
+
+I've documented every single part of this project in depth — covering React, Three.js, WebSockets, WebRTC, Node.js, and more. 
+
+Check out the full learning guide in the [docs/Chapter_00_Index.md](docs/Chapter_00_Index.md) file to understand how to build this from scratch and prep for interviews!
