@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import html2canvas from 'html2canvas'
+import * as htmlToImage from 'html-to-image'
 
 const SONGS = [
   { id: 0, title: 'Aaj Se Teri', url: encodeURI('/Aaj Se Teri - Lyrical  Padman  Akshay Kumar & Radhika Apte  Arijit Singh  Amit Trivedi - Zee Music Company.mp3') },
@@ -73,17 +73,18 @@ export default function WeddingEnding({ socket }) {
     const el = document.getElementById('wedding-certificate')
     if (!el) return
     
-    // Briefly adjust styling to ensure crisp capture if needed, then capture
-    html2canvas(el, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(canvas => {
-      const imgData = canvas.toDataURL('image/png')
-      const a = document.createElement('a')
-      a.href = imgData
-      a.download = `Wedding_Certificate_${dateStr}.png`
-      a.click()
-    }).catch(err => {
-      console.error("Certificate generation error:", err)
-      alert("Oops! There was an error generating the image. Please try again.")
-    })
+    // html-to-image handles complex CSS (like WebkitBackgroundClip and drop-shadow) much better
+    htmlToImage.toPng(el, { quality: 1.0, pixelRatio: 2, backgroundColor: '#ffffff' })
+      .then(function (dataUrl) {
+        const a = document.createElement('a')
+        a.href = dataUrl
+        a.download = `Wedding_Certificate_${dateStr}.png`
+        a.click()
+      })
+      .catch(function (error) {
+        console.error('Certificate generation error:', error)
+        alert('Oops! There was an error generating the image. Please try again.')
+      })
   }
 
   const downloadPhoto = (url, filename) => {
